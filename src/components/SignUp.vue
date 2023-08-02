@@ -1,45 +1,78 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="mx-auto max-w-4xl my-40">
+  <div class="mx-auto max-w-4xl md:my-40 my-0">
     <div
-      class="h-full items-center bg-white rounded-3xl shadow-lg flex justify-between space-x-10"
+      class="h-full items-center bg-white md:rounded-3xl rounded-none shadow-lg flex-col-reverse flex md:flex-row justify-between space-x-0 md:space-x-10"
     >
-      <div class="pl-14 flex flex-col space-y-6">
+      <div class="px-4 md:pl-14 flex flex-col space-y-4 pt-10 md:pt-0">
         <h1 class="font-bold text-dark-slate-grey text-5xl">Stay Updated!</h1>
         <p class="text-charcoal-grey font-normal">
           Join 60,000+ product managers receiving monthly updates on :
         </p>
         <div>
-          <ul class="" v-for="i in updates" :key="i.update">
-            <li class="text-dark-slated-grey">{{ i.update }}</li>
-          </ul>
+          <div v-for="i in lists" :key="i.update" class="pt-2">
+            <div class="flex space-x-2">
+              <img src="/images/icon-list.svg" alt="list icon" />
+              <p class="text-dark-slated-grey">{{ i.update }}</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between">
+            <label for="email" class="text-dark-slated-grey font-bold text-sm"
+              >Email address</label
+            >
+            <label for="email" class="text-tomato font-bold text-sm"
+              >Valid email required</label
+            >
+          </div>
+          <input
+            type="email"
+            name=""
+            id=""
+            v-model="email"
+            required
+            class="h-14 w-full mt-2 mb-6 border border-grey outline-none rounded-md placeholder:text-grey placeholder:pl-7 pl-2 focus:bg-red-100 focus:border focus:border-orange-400"
+            placeholder="email@company.com"
+          />
+          <div class="pb-10 md:pb-0">
+            <button
+              class="w-full bg-dark-slate-grey text-white rounded-md h-14 font-normal"
+              @click="open = true"
+            >
+              Subscribe to monthly newsletter
+            </button>
+          </div>
         </div>
       </div>
       <div class="">
-        <div class="p-6">
+        <div class="px-0 md:p-6">
           <img src="/images/illustration-sign-up-desktop.svg" alt="" />
         </div>
       </div>
     </div>
   </div>
+
+  <Modal v-if="open" @close="open = false" />
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-
-const updates = ref<Updates[]>([
+import { reactive, ref } from "vue";
+import Modal from "./Modal.vue";
+import { TransitionRoot } from "@headlessui/vue";
+const lists: string[] = reactive([
   {
     update: "Product discovery and building what matters",
   },
   {
     update: "Measuring to ensure upadtes are in success",
   },
+
   {
     update: "And much more!",
   },
 ]);
-interface Updates {
-  update: string;
-}
+const open = ref<Boolean>(false);
+const email = ref<String>("");
 </script>
