@@ -21,9 +21,9 @@
             <label for="email" class="text-dark-slated-grey font-bold text-sm"
               >Email address</label
             >
-            <label for="email" class="text-tomato font-bold text-sm"
-              >Valid email required</label
-            >
+            <p for="email" class="text-tomato font-bold text-sm" v-if="error">
+              {{ error }}
+            </p>
           </div>
           <input
             type="email"
@@ -36,7 +36,7 @@
           />
           <div class="pb-10 md:pb-0">
             <button
-              class="w-full bg-dark-slate-grey text-white rounded-md h-14 font-normal"
+              class="w-full bg-dark-slate-grey text-white rounded-md h-14 font-normal hover:opacity-70"
               @click="open = true"
             >
               Subscribe to monthly newsletter
@@ -56,7 +56,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import Modal from "./Modal.vue";
 
 interface Lists {
@@ -76,4 +76,7 @@ const lists = ref<Lists[]>([
 ]);
 const open = ref<Boolean>(false);
 const email = ref<String>("");
+const error = computed(() => {
+  return email.value === "" ? "Valid email required" : "";
+});
 </script>
