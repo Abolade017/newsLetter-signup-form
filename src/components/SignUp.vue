@@ -1,7 +1,7 @@
 <template>
-  <div class="mx-auto max-w-4xl md:my-40 my-0">
+  <div class="mx-auto max-w-4xl">
     <div
-      class="h-full items-center bg-white md:rounded-3xl rounded-none shadow-lg flex-col-reverse flex md:flex-row justify-between space-x-0 md:space-x-10"
+      class="h-full md:my-40 my-0 items-center bg-white md:rounded-3xl rounded-none shadow-lg flex-col-reverse flex md:flex-row justify-between space-x-0 md:space-x-10"
     >
       <div class="px-4 md:pl-14 flex flex-col space-y-4 pt-10 md:pt-0">
         <h1 class="font-bold text-dark-slate-grey text-5xl">Stay Updated!</h1>
@@ -56,7 +56,6 @@
 </template>
 
 <script setup lang="ts">
-// import { defineComponent, ref } from "vue";
 import { ref } from "vue";
 import Modal from "./Modal.vue";
 
@@ -64,8 +63,6 @@ interface Lists {
   update: string;
 }
 
-// export default defineComponent({
-// setup() {
 const lists = ref<Lists[]>([
   {
     update: "Product discovery and building what matters",
@@ -79,8 +76,4 @@ const lists = ref<Lists[]>([
 ]);
 const open = ref<Boolean>(false);
 const email = ref<String>("");
-
-// return { lists, open, email };
-// },
-// });
 </script>

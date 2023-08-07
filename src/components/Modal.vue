@@ -15,7 +15,7 @@
 
       <div class="fixed inset-0 z-10 overflow-y-auto">
         <div
-          class="flex h-screen md:min-h-full md:items-end justify-center p-0 md:p-4 text-center sm:items-center sm:p-0"
+          class="flex h-screen md:min-h-full justify-center p-0 md:p-4 text-center sm:items-center sm:p-0"
         >
           <TransitionChild
             as="template"
@@ -73,7 +73,6 @@
 </template>
 
 <script setup lang="ts">
-// import { defineComponent, ref } from "vue";
 import { ref } from "vue";
 import {
   Dialog,
@@ -83,10 +82,5 @@ import {
   TransitionRoot,
 } from "@headlessui/vue";
 import { CheckIcon } from "@heroicons/vue/24/solid";
-// export default defineComponent({
-// setup() {
 const open = ref(true);
-// return { open };
-// },
-// });
 </script>
