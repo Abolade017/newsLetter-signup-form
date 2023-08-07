@@ -1,5 +1,3 @@
-<script setup lang="ts"></script>
-
 <template>
   <div class="mx-auto max-w-4xl md:my-40 my-0">
     <div
@@ -58,21 +56,31 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from "vue";
+// import { defineComponent, ref } from "vue";
+import { ref } from "vue";
 import Modal from "./Modal.vue";
-import { TransitionRoot } from "@headlessui/vue";
-const lists: string[] = reactive([
+
+interface Lists {
+  update: string;
+}
+
+// export default defineComponent({
+// setup() {
+const lists = ref<Lists[]>([
   {
     update: "Product discovery and building what matters",
   },
   {
-    update: "Measuring to ensure upadtes are in success",
+    update: "Measuring to ensure updates are in success",
   },
-
   {
     update: "And much more!",
   },
 ]);
 const open = ref<Boolean>(false);
 const email = ref<String>("");
+
+// return { lists, open, email };
+// },
+// });
 </script>

@@ -73,6 +73,7 @@
 </template>
 
 <script setup lang="ts">
+// import { defineComponent, ref } from "vue";
 import { ref } from "vue";
 import {
   Dialog,
@@ -82,6 +83,10 @@ import {
   TransitionRoot,
 } from "@headlessui/vue";
 import { CheckIcon } from "@heroicons/vue/24/solid";
-
+// export default defineComponent({
+// setup() {
 const open = ref(true);
+// return { open };
+// },
+// });
 </script>
